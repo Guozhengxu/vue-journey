@@ -1,34 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index</title>
-</head>
-<body>
-    <section id="vue">
-        <div>{{message}}</div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-        (function (w) {
-            var app = new Vue({
-             el:'#vue',
-             data:{
-                message:'message'
-             },
-             created:function(){
-               this.init(); 
-             },
-             methods:{
-                init:function(){
-                    console.log('www');
-                }
-             }
-         })
-        })(window)
-         
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>index</title>
+    </head>
+    <body>
+        <section id="vue">
+            <div>{{message}}</div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="js/index.js"></script>
+    </body>
 </html>
