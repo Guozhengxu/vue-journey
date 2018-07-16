@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+</head>
+<body>
+    <section id="vue">
+        <div>{{message}}</div>
+        <div>{{ reversedMessage }}</div>
+        <div>{{ now }}</div>
+        <div>
+            <span>{{fullName}}</span>
+            <input type="text" v-model="firstName">
+            <input type="text" v-model="lastName">
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../js/computeAttribute.js"></script>
+</body>
+</html>
