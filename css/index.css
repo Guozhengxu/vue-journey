@@ -1,0 +1,13 @@
+#header-swiper {
+    height: 200px;
+    background: #ccc;
+    text-align: center;
+}
+.swiper-slide{
+    display: flex;
+    align-content: center
+}
+.swiper-slide img{
+    width:100%;
+    min-height: 100%;
+}

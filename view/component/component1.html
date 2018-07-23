@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>组件1</title>
+    </head>
+    <body>
+        <section id="vue">
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-console></button-console>
+            <component-a></component-a>
+            <blog-post post-title="hello!"></blog-post>
+            <blog-post
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:id="post.id"
+                v-bind:title="post.title"
+                v-bind:content="post.content"></blog-post>
+            <blog-get v-for="(post,index) in posts" v-bind:post="post"></blog-get>
+            <div>{{ message|capitalize }}</div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            //全局注册组件
+            Vue.component("button-counter", {
+                data: function () {
+                    return {count: 0}
+                },
+                template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+            });
+
+            Vue.component("button-console", {
+                data: function () {
+                    return {
+                        i: 0,
+                        tips: function () {
+                            console.log(i)
+                        }
+                    }
+                },
+                template: "<section><p>这是一个p标签</p><button-counter></button-counter></section>"
+            });
+
+            Vue.component("blog-post", {
+                props: [
+                    'id', 'title', 'content'
+                ],
+                template: `<div class='blog'>
+                                <p>{{ id }}这是一个组件 + {{ title }}</p>
+                                <div v-html='content'></div>
+                           </div>`
+            })
+
+            Vue.component("blog-get", {
+                props: ['post'],
+                template: `<div>
+                            <p>{{ post.id }}</p>
+                            <p>{{ post.title }}</p>
+                            <p>{{ post.content }}</p>
+                          </div>`
+            })
+            //局部注册组件
+            var ComponentA = {
+                data: function () {
+                    return {count: 0}
+                },
+                template: '<p>这是一个组件a</p>'
+            }
+
+            Vue.filter("capitalize", function (value) {
+                if (!value) 
+                    return ''
+                value = value.toString()
+                return value
+                    .charAt(0)
+                    .toUpperCase() + value.slice(1)
+            });
+
+            var vm = new Vue({
+                el: "#vue",
+                data: {
+                    message:"postman",
+                    posts: [
+                        {
+                            id: 1,
+                            title: 'My journey with Vue',
+                            content: 'vue is a good framework for frontpoint'
+                        }, {
+                            id: 2,
+                            title: 'Blogging with Vue',
+                            content: 'i dont know'
+                        }, {
+                            id: 3,
+                            title: 'Why Vue is so fun',
+                            content: 'this is a joke'
+                        }
+                    ]
+                },
+                components: {
+                    'component-a': ComponentA
+                }
+            })
+        </script>
+    </body>
+</html>
